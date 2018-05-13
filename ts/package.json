@@ -1,0 +1,17 @@
+{
+  "name": "magic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "postinstall": "tsc",
+    "start": "npm run build && node dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^10.0.8",
+    "typescript": "^2.8.3"
+  }
+}

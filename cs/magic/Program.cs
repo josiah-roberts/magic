@@ -21,19 +21,20 @@ namespace magic
             return (int)((state0 + state1) % (ulong)maxValue);
         }
 
+        static int ReadInt(string prompt, Func<int, bool> predicate)
+        {
+            var output = -1;
+            Write(prompt);
+            while (!int.TryParse(ReadLine(), out output) || !predicate(output))
+                WriteLine("Not a valid value");
+
+            return output;
+        }
+
         static void Main(string[] args)
         {
-            var maxValue = -1;
-            Write("Enter a max greater than 0: ");
-            while (!int.TryParse(ReadLine(), out maxValue) || maxValue < 1)
-                WriteLine("Not a number");
-
-            maxValue++;
-
-            var magicNumber = -1;
-            Write("Enter a magic number in range: ");
-            while (!int.TryParse(ReadLine(), out magicNumber) || magicNumber < 0 || magicNumber >= maxValue)
-                WriteLine("Not a number");
+            var maxValue = ReadInt("Enter a max greater than 0: ", x => x >= 1);
+            var magicNumber = ReadInt("Enter a magic number in range: ", x => x >= 0 && x < maxValue);
 
             var random = new Random();
             var stopWatch = new Stopwatch();

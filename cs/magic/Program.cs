@@ -36,7 +36,6 @@ namespace magic
             var maxValue = ReadInt("Enter a max greater than 0: ", x => x >= 1);
             var magicNumber = ReadInt("Enter a magic number in range: ", x => x >= 0 && x < maxValue);
 
-            var random = new Random();
             var stopWatch = new Stopwatch();
             stopWatch.Start();
             var guessCount = 0;

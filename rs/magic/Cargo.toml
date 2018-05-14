@@ -1,0 +1,7 @@
+[package]
+name = "magic"
+version = "0.1.0"
+authors = ["joflashstudios <joflashstudios@gmail.com>"]
+
+[dependencies]
+text_io = "0.1.7"

@@ -38,7 +38,7 @@ namespace magic
 
             var stopWatch = new Stopwatch();
             stopWatch.Start();
-            var guessCount = 0;
+            var guessCount = 1;
 
             while (Random(maxValue) != magicNumber)
                 guessCount++;

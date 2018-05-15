@@ -30,7 +30,7 @@ fn read_int<F>(prompt: &str, validate: F) -> i32 where F: Fn(i32) -> bool {
 }
 
 fn main() {
-    let max = read_int("Enter a max greater than 0: ", |x| x > 0);
+    let max = read_int("Enter a max greater than 0: ", |x| x > 0) + 1;
     let magic = read_int("Enter a magic number in range: ", |x| x >= 0 && x < max);    
     
     let start = Instant::now();

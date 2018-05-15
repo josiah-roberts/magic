@@ -23,12 +23,11 @@ namespace magic
 
         static int ReadInt(string prompt, Func<int, bool> predicate)
         {
-            var output = -1;
             Write(prompt);
-            while (!int.TryParse(ReadLine(), out output) || !predicate(output))
-                WriteLine("Not a valid value");
+            if (int.TryParse(ReadLine(), out var output) && predicate(output))
+                return output;
 
-            return output;
+            return ReadInt(prompt, predicate);
         }
 
         static void Main(string[] args)
@@ -36,10 +35,9 @@ namespace magic
             var maxValue = ReadInt("Enter a max greater than 0: ", x => x >= 1);
             var magicNumber = ReadInt("Enter a magic number in range: ", x => x >= 0 && x < maxValue);
 
-            var stopWatch = new Stopwatch();
-            stopWatch.Start();
-            var guessCount = 1;
+            var stopWatch = Stopwatch.StartNew();
 
+            var guessCount = 1;
             while (Random(maxValue) != magicNumber)
                 guessCount++;
 

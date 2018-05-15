@@ -17,13 +17,10 @@ async function getNumber(prompt: string, validator: (value: number) => Boolean) 
     );
 }
 
-function randomInt(max: number) : number
-{
-    return Math.floor(Math.random() * (max + 1));
-}
+let randomInt = (max: number) =>
+    Math.floor(Math.random() * (max + 1));
 
-function guess(max: number, magic: number) : number
-{
+let guess = (max: number, magic: number) => {
     let guess = 1;
     while (randomInt(max) != magic)
         guess++;
@@ -44,4 +41,4 @@ async function main()
     console.log(`That's ${(guessCount / (ms / 1000)) / 1000000}m/sec`);
 }
 
-main().then(() => rl.close());
+main().then(() => rl.close()).catch(() => rl.close());

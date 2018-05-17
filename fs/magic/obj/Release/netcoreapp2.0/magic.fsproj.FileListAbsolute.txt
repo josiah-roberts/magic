@@ -1,0 +1,7 @@
+D:\Source\magic\fs\magic\bin\Release\netcoreapp2.0\magic.deps.json
+D:\Source\magic\fs\magic\bin\Release\netcoreapp2.0\magic.runtimeconfig.json
+D:\Source\magic\fs\magic\bin\Release\netcoreapp2.0\magic.runtimeconfig.dev.json
+D:\Source\magic\fs\magic\bin\Release\netcoreapp2.0\magic.dll
+D:\Source\magic\fs\magic\bin\Release\netcoreapp2.0\magic.pdb
+D:\Source\magic\fs\magic\obj\Release\netcoreapp2.0\magic.dll
+D:\Source\magic\fs\magic\obj\Release\netcoreapp2.0\magic.pdb

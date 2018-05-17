@@ -17,39 +17,37 @@ let random max =
     int((state0 + state1) % uint64(max))
 
 let inline (>->) a b x =
-    match a(x) with
-    | Some res -> b(res)
+    match a x with
+    | Some res -> b res
     | None -> None        
 
 let tryParse str =
-   match System.Int32.TryParse(str) with
-   | (true,int) -> Some(int)
+   match System.Int32.TryParse str with
+   | (true, int) -> Some int
    | _ -> None
 
-let applyValidator validator (i: int) =
-    match validator(i) with
-    | true -> Some i
+let applyValidator validator arg =
+    match validator arg with
+    | true -> Some arg
     | false -> None
 
 let rec readInt prompt validator =
     printfn "%s" prompt
-    let validatedInput = Console.ReadLine() |> (tryParse >-> applyValidator validator)
-    match validatedInput with
+    let input = Console.ReadLine() |> (tryParse >-> applyValidator validator)
+    match input with
     | Some i -> i
-    | None -> readInt(prompt)(validator)
+    | None -> readInt prompt validator
     
 type Timing<'a> = { ElapsedMilliseconds:int64; Result:'a }
-
-let time<'a,'b> (a: 'b -> 'a) x : Timing<'a> =
-    let stopwatch = Stopwatch()
-    stopwatch.Start()
-    let result = a(x)
+let time f x =
+    let stopwatch = Stopwatch.StartNew()
+    let result = f x
     stopwatch.Stop()
     { 
         ElapsedMilliseconds = stopwatch.ElapsedMilliseconds
         Result = result
     }
-   
+    
 let rec guessInternal max magic i =
     let nextCount = i + 1
     match random max with
@@ -60,10 +58,10 @@ let guess max magic =
     guessInternal max magic 0
 
 [<EntryPoint>]
-let main argv =
+let main _ =
     let max = readInt "Enter a max greater than 0: " (fun x -> x > 0)
     let magic = readInt "Enter a magic number in range: " (fun x -> x >= 0 && x <= max)
     let result = time (guess max) magic
     printfn "Took %i guesses over %f seconds" result.Result (float(result.ElapsedMilliseconds) / float(1000)) 
     printfn "That's %f m/sec" (float(result.Result) / (float(result.ElapsedMilliseconds) / float(1000)) / float(1000000))
-    0 // return an integer exit code
+    0

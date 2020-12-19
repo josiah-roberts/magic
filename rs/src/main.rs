@@ -1,5 +1,3 @@
-
-#![feature(duration_extras)]
 #[macro_use] extern crate text_io;
 
 use std::ops::Fn;

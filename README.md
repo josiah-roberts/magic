@@ -1,7 +1,7 @@
 # magic
 
-AMD® Ryzen 7 3700x 8-core processor × 16
-16GB x 2 DDR4 @ 3200 Mhz
+AMD® Ryzen 7 3700x 8-core processor × 16  
+16GB x 2 DDR4 @ 3200 Mhz  
 Pop!\_OS 20.04 LTS
 
 Optimizations enabled everywhere.  

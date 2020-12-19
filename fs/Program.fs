@@ -21,9 +21,14 @@ let inline (>->) a b x =
     | Some res -> b res
     | None -> None        
 
+let (|ParseInt|_|) (str:string) =
+  match System.Int32.TryParse(str) with
+    | (true,int) ->Some int
+    | _ -> None
+
 let tryParse str =
-   match System.Int32.TryParse str with
-   | (true, int) -> Some int
+   match str with
+   | ParseInt int -> Some int
    | _ -> None
 
 let applyValidator validator arg =
